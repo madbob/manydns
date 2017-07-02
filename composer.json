@@ -1,0 +1,20 @@
+{
+	"name": "madbob/manydns",
+	"description": "Wrapper for many dynamic DNS providers",
+	"keywords": ["dns", "dyndns", "noip", "changedns", "dnsexit", "dynu"],
+	"type": "package",
+	"license": "GPL-3.0+",
+	"authors": [{
+		"name": "Roberto Guido",
+		"email": "bob@linux.it"
+	}],
+	"autoload": {
+		"psr-4": {
+			"ManyDNS\\": "src/",
+			"ManyDNS\\Providers\\": "src/Providers/"
+		}
+	},
+	"version": "0.1",
+	"minimum-stability": "dev"
+}
+
