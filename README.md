@@ -8,6 +8,7 @@ Currently supported providers:
 * NoIP https://www.noip.com/
 * ChangeIP http://www.changeip.com/
 * Dynu https://www.dynu.com/
+* DuckDNS https://www.duckdns.org/
 
 # Installation
 
@@ -58,3 +59,11 @@ catch (FailedUpdateException $e) {
 }
 ```
 
+# Special Behaviors
+
+The DuckDNS authentication is based on a single token, to be used in place of the password when asking for an update.
+
+```
+$provider = ManyDNS::getProvider('DuckDNS');
+$provider->updateNow(null, $token, $hostname, $ip);
+```

@@ -1,7 +1,7 @@
 {
 	"name": "madbob/manydns",
 	"description": "Wrapper for many dynamic DNS providers",
-	"keywords": ["dns", "dyndns", "noip", "changedns", "dynu"],
+	"keywords": ["dns", "dyndns", "noip", "changedns", "dynu", "duckdns"],
 	"type": "package",
 	"license": "GPL-3.0+",
 	"authors": [{
@@ -14,6 +14,5 @@
 			"ManyDNS\\Providers\\": "src/Providers/"
 		}
 	},
-	"version": "0.1",
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }
