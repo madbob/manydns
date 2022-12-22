@@ -12,16 +12,17 @@ class ManyDNS
 	{
 		$providers = [];
 		$folder = __DIR__ . '/Providers';
+
 		foreach(scandir($folder) as $file) {
 			if ($file == '.' || $file == '..')
 				continue;
 			$name = 'ManyDNS\\Providers\\' . str_replace('.php', '', $file);
 			$providers[] = new $name();
 		}
-		
+
 		return $providers;
 	}
-	
+
 	public static function getProvider($name)
 	{
 		$name = strtolower($name);
@@ -29,11 +30,11 @@ class ManyDNS
 		$providers = self::getProviders();
 		foreach($providers as $provider) {
 			$pname = strtolower($provider->getName());
-			if ($pname == $name)
+			if ($pname == $name) {
 				return $provider;
+			}
 		}
-		
+
 		return null;
 	}
 }
-

@@ -17,25 +17,29 @@ class ChangeIP extends Client
 		$this->accepts_null_ip = true;
 		$this->name = "ChangeIP";
 	}
-	
+
 	public function doRealUpdate($username, $password, $hostname, $ip)
 	{
-		if ($ip == null)
+		if ($ip == null) {
 			$url = sprintf('https://nic.changeip.com/nic/update?hostname=%s', $hostname);
-		else
+		}
+		else {
 			$url = sprintf('https://nic.changeip.com/nic/update?hostname=%s&ip=%s', $hostname, $ip);
-			
+		}
+
 		$resp = $this->doGet($username, $password, $url);
 		$resp = trim($resp);
 
 		if ($resp != '200 Successful Update') {
-			if (strpos($resp, '401') === 0)
+			if (strpos($resp, '401') === 0) {
 				throw new FailedUpdateException('Invalid Authentication', ManyDNS::ERROR_INVALID_AUTH);
-			else if (strpos($resp, '422') === 0)
+			}
+			else if (strpos($resp, '422') === 0) {
 				throw new FailedUpdateException('Invalid Host', ManyDNS::ERROR_INVALID_HOST);
-			else
+			}
+			else {
 				throw new FailedUpdateException('Unknown Error', ManyDNS::ERROR_UNKNOWN);
+			}
 		}
 	}
 }
-

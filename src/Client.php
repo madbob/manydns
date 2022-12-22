@@ -16,15 +16,16 @@ abstract class Client
 			CURLOPT_URL => $url,
 			CURLOPT_USERAGENT => 'ManyDNS PHP Package'
 		));
-		
-		if ($username != null && $password != null)
-			curl_setopt($curl, CURLOPT_USERPWD, $username . ":" . $password);  
-		
+
+		if ($username != null && $password != null) {
+			curl_setopt($curl, CURLOPT_USERPWD, $username . ":" . $password);
+		}
+
 		$resp = curl_exec($curl);
 		curl_close($curl);
 		return $resp;
 	}
-	
+
 	protected function guessIP()
 	{
 		$ret = $this->doGet('http://ipecho.net/plain');
@@ -40,11 +41,12 @@ abstract class Client
 	{
 		return $this->name;
 	}
-	
+
 	public function updateNow($username, $password, $host, $ip = null)
 	{
-		if ($ip == null && $this->acceptsNullIP() === false)
+		if ($ip == null && $this->acceptsNullIP() === false) {
 			$ip = $this->guessIP();
+		}
 
 		$this->doRealUpdate($username, $password, $host, $ip);
 		return true;
@@ -52,4 +54,3 @@ abstract class Client
 
 	protected abstract function doRealUpdate($username, $password, $host, $ip);
 }
-
